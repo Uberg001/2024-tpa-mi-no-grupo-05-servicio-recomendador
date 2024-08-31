@@ -1,0 +1,34 @@
+@startuml
+
+package "Nuestra infraestructura" {
+
+    node "Servidor de\nRecomendación" {
+    component "Servicio de\nRecomendación" as service
+    }
+
+    node "Servidor de\nbase de datos" {
+    component "DB MySQL" as db
+    }
+
+    interface "tcp/ip" as db_interface
+}
+
+note right of db
+    La DB que usamos para
+    todo nuestro sistema
+endnote
+
+
+interface "https (REST)" as service_interface
+
+note right of service_interface
+    Interfaz de
+    comunicación con el
+    de recomendación
+endnote
+
+db -- db_interface
+db_interface )- service
+service -- service_interface
+
+@enduml
