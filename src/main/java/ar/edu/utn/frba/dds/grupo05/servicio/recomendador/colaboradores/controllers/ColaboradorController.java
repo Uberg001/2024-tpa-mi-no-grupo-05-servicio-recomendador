@@ -27,8 +27,8 @@ public class ColaboradorController {
 
     @GetMapping
     public ResponseEntity<List<ColaboradorOutputDTO>> getColaboradores(
-            @RequestParam(value = "minPuntos", defaultValue = "0") Double minPuntos,
-            @RequestParam(value = "minDonaciones", defaultValue = "0") Integer minDonaciones,
+            @RequestParam(value = "minPuntos", required = true) Double minPuntos,
+            @RequestParam(value = "minDonaciones", required = true) Integer minDonaciones,
             @RequestParam(value= "limit", defaultValue = "10") Integer limit
     ) {
         return ResponseEntity.ok(
