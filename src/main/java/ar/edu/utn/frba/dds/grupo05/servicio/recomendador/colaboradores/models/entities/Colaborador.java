@@ -23,7 +23,7 @@ public class Colaborador extends Persistente {
     @Column(name="apellido", length = 100)
     private String apellido;
 
-    @OneToMany(mappedBy = "colaborador")
+    @OneToMany(mappedBy = "colaborador", cascade = CascadeType.PERSIST)
     private List<MedioDeContacto> mediosDeContacto;
 
     @Column(name="puntos")
