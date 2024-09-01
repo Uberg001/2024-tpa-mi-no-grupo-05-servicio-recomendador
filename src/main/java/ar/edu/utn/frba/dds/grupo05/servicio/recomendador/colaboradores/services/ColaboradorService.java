@@ -28,7 +28,7 @@ public class ColaboradorService implements IColaboradorService {
     }
 
     public List<ColaboradorOutputDTO> getColaboradores(Double minPuntos, Integer minDonaciones, Integer limit) {
-        Pageable pageable = PageRequest.of(0, limit);
+        Pageable pageable = PageRequest.ofSize(limit);
 
         List<Colaborador> colaboradores = colaboradorRepository
                 .findByPuntosGreaterThanEqualAndDonacionesGreaterThanEqual(pageable, minPuntos, minDonaciones);

@@ -1,7 +1,9 @@
 package ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.services;
 
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.models.entities.Colaborador;
+import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.models.entities.MedioDeContacto;
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.models.entities.TipoDocumento;
+import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.models.entities.TipoMedioDeContacto;
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.models.repositories.IColaboradorRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,6 +30,10 @@ class ColaboradorServiceTest {
             Integer donacionesRandom = 10;
             colaborador.setPuntos(puntosRandom);
             colaborador.setDonaciones(donacionesRandom);
+
+            MedioDeContacto medioDeContacto = new MedioDeContacto(TipoMedioDeContacto.EMAIL,
+                                                            "colaborador" + i + "@gmail.com");
+            colaborador.addMedioDeContacto(medioDeContacto);
             colaboradorRepository.save(colaborador);
         }
 

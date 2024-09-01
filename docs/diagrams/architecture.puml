@@ -10,14 +10,16 @@ package "Nuestra infraestructura" {
     component "DB MySQL" as db
     }
 
+    node "Servidor de\naplicación" {
+    component "Aplicacion Web" as app
+    }
+
+    interface "http (REST)" as app_interface
     interface "tcp/ip" as db_interface
+
+    app -- app_interface
+    service --( app_interface
 }
-
-note right of db
-    La DB que usamos para
-    todo nuestro sistema
-endnote
-
 
 interface "https (REST)" as service_interface
 
@@ -29,6 +31,6 @@ endnote
 
 db -- db_interface
 db_interface )- service
-service -- service_interface
+service --- service_interface
 
 @enduml
