@@ -1,5 +1,6 @@
 package ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.services;
 
+import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos.input.ColaboradorInputDTO;
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos.output.ColaboradorOutputDTO;
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.mappers.ColaboradorMapper;
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.models.entities.Colaborador;
@@ -25,6 +26,12 @@ public class ColaboradorService implements IColaboradorService {
 
     public void save(Colaborador colaborador) {
         colaboradorRepository.save(colaborador);
+    }
+
+    @Override
+    public void bulkSave(List<ColaboradorInputDTO> colaboradoresInput) {
+        List<Colaborador> colaboradores =  this.colaboradorMapper.toColaboradorFromInputDTO(colaboradoresInput);
+        this.colaboradorRepository.saveAll(colaboradores);
     }
 
     public List<ColaboradorOutputDTO> getColaboradores(Double minPuntos, Integer minDonaciones, Integer limit) {
