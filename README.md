@@ -21,4 +21,6 @@ Nuestra API ofrecerá un endpoint que permitirá a las empresas solicitar colabo
 Contara con los siguientes query params:
 - `minPoints`: cantidad mínima de puntos requeridos
 - `minDonations`: cantidad mínima de donación de viandas realizada en el último mes
+- `page`: número de página a ser devuelto
 - `limit`: cantidad máxima de colaboradores a ser devueltos a la plataforma externa
+- `sort`: campo por el cual se ordenarán los colaboradores (puede ser `points,(asc|desc)` o `donations,(asc|desc)`). Desc por default.

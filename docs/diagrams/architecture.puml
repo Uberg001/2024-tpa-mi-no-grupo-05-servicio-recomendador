@@ -17,8 +17,8 @@ package "Nuestra infraestructura" {
     interface "http (REST)" as app_interface
     interface "tcp/ip" as db_interface
 
-    app -- app_interface
-    service --( app_interface
+    app --( app_interface
+    service -- app_interface
 }
 
 interface "https (REST)" as service_interface
