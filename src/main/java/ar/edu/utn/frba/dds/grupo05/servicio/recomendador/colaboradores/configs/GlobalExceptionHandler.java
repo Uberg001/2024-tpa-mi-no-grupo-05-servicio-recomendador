@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(InvalidSortStringException.class)
-    public ResponseEntity<ErrorResponse> handleGlobalException(Exception ex) {
+    public ResponseEntity<ErrorResponse> handleInvalidSortStringException(InvalidSortStringException ex) {
         // Create a custom error response with additional context
         ErrorResponse errorResponse = new ErrorResponse(
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
