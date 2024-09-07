@@ -11,7 +11,7 @@ package "Nuestra infraestructura" {
     }
 
     node "Servidor de\naplicación" {
-    component "Aplicacion Web" as app
+    component "Aplicacion Web\nproveedora de\ncolaboradores" as app
     }
 
     interface "http (REST)" as app_interface
@@ -26,7 +26,7 @@ interface "https (REST)" as service_interface
 note right of service_interface
     Interfaz de
     comunicación con el
-    de recomendación
+    servicio de recomendación
 endnote
 
 db -- db_interface
