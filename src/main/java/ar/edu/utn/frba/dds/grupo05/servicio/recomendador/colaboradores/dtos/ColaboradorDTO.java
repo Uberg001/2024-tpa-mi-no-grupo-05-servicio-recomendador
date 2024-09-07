@@ -1,10 +1,10 @@
-package ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos.output;
+package ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class ColaboradorOutputDTO {
+public class ColaboradorDTO {
     @JsonProperty("nro_documento")
     private String nroDocumento;
 
@@ -18,7 +18,7 @@ public class ColaboradorOutputDTO {
     private String apellido;
 
     @JsonProperty("medios_de_contacto")
-    private List<MedioDeConctactoOutputDTO> mediosDeContacto;
+    private List<MedioDeConctactoDTO> mediosDeContacto;
 
     @JsonProperty("puntos")
     private Double puntos;
@@ -58,11 +58,11 @@ public class ColaboradorOutputDTO {
         this.apellido = apellido;
     }
 
-    public List<MedioDeConctactoOutputDTO> getMediosDeContacto() {
+    public List<MedioDeConctactoDTO> getMediosDeContacto() {
         return mediosDeContacto;
     }
 
-    public void setMediosDeContacto(List<MedioDeConctactoOutputDTO> mediosDeContacto) {
+    public void setMediosDeContacto(List<MedioDeConctactoDTO> mediosDeContacto) {
         this.mediosDeContacto = mediosDeContacto;
     }
 

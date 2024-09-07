@@ -1,17 +1,17 @@
-package ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos.output;
+package ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 
-public class MedioDeConctactoOutputDTO {
+public class MedioDeConctactoDTO {
     @JsonProperty("tipo_medio_contacto")
     private String tipoMedioDeContacto;
 
     @JsonProperty("detalle")
     private String detalle;
 
-    public MedioDeConctactoOutputDTO(String tipoMedioDeContacto, String detalle){
+    public MedioDeConctactoDTO(String tipoMedioDeContacto, String detalle){
         this.tipoMedioDeContacto = tipoMedioDeContacto;
         this.detalle = detalle;
     }

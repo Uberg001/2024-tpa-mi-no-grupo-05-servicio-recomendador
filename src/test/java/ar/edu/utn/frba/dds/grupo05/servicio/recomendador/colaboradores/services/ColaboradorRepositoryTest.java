@@ -9,14 +9,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class ColaboradorServiceTest {
+class ColaboradorRepositoryTest {
 
     @Autowired
     private IColaboradorRepository colaboradorRepository;
@@ -58,11 +60,36 @@ class ColaboradorServiceTest {
 
     @Test
     public void getColaboradoresTest() {
-        Pageable pageable = Pageable.ofSize(10);
+        // Sort by puntos, desc
+        Pageable pageable = PageRequest.of(0, 10);
         List<Colaborador> colaboradores = colaboradorRepository
                 .findByPuntosGreaterThanEqualAndDonacionesGreaterThanEqual(pageable,50.0, 50);
         assertTrue(colaboradores.size()==10);
         assertEquals(colaboradores.stream().allMatch(colaborador -> colaborador.getPuntos() >= 50.0), true);
         assertEquals(colaboradores.stream().allMatch(colaborador -> colaborador.getDonaciones() >= 50), true);
+    }
+
+    @Test
+    public void getColarboradoresSortByPuntos() {
+        Sort.Order order = new Sort.Order(Sort.Direction.DESC, "puntos");
+        Pageable pageRequest = PageRequest.of(0, Integer.MAX_VALUE, Sort.by(order));
+        List<Colaborador> colaboradores = colaboradorRepository
+                .findByPuntosGreaterThanEqualAndDonacionesGreaterThanEqual(pageRequest, 0d, 0);
+        // Verificar orden
+        for (int i = 0; i < colaboradores.size() - 1; i++) {
+            assertTrue(colaboradores.get(i).getPuntos() >= colaboradores.get(i + 1).getPuntos());
+        }
+    }
+
+    @Test
+    public void getColaboradoresSortByPuntosASC() {
+        Sort.Order order = new Sort.Order(Sort.Direction.ASC, "donaciones");
+        Pageable pageRequest = PageRequest.of(0, Integer.MAX_VALUE, Sort.by(order));
+        List<Colaborador> colaboradores = colaboradorRepository
+                .findByPuntosGreaterThanEqualAndDonacionesGreaterThanEqual(pageRequest, 0d, 0);
+        // Verificar orden
+        for (int i = 0; i < colaboradores.size() - 1; i++) {
+            assertTrue(colaboradores.get(i).getDonaciones() <= colaboradores.get(i + 1).getDonaciones());
+        }
     }
 }
