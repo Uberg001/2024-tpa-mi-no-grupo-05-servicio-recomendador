@@ -84,6 +84,12 @@ components:
           type: string
         tipo_documento:
           type: string
+          enum:
+            - DNI
+            - LE
+            - LC
+            - PASAPORTE
+          description: Tipo de documento de identidad
         nombre:
           type: string
         apellido:
@@ -102,5 +108,10 @@ components:
       properties:
         tipo_medio_contacto:
           type: string
+          enum:
+            - EMAIL
+            - TELEGRAM
+            - WHATSAPP
+          description: Tipo de medio de contacto
         detalle:
           type: string
