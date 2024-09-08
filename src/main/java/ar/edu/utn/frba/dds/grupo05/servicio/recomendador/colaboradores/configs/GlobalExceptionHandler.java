@@ -13,13 +13,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(InvalidSortStringException.class)
     public ResponseEntity<ErrorResponse> handleInvalidSortStringException(InvalidSortStringException ex) {
-        // Create a custom error response with additional context
         ErrorResponse errorResponse = new ErrorResponse(
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                HttpStatus.BAD_REQUEST.value(),
                 "Internal Server Error",
                 ex.getMessage()
         );
-
-        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 }
