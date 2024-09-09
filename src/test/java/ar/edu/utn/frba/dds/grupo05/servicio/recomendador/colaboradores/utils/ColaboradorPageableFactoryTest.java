@@ -9,14 +9,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ColaboradorPageableFactoryTest {
 
-    private ColaboradorPageableFactory colaboradorPageableFactory;
+    private PageableFactory colaboradorPageableFactory;
 
     @BeforeEach
     void setUp() {
         SortStringValidator sortStringValidator = new SortStringValidator();
         sortStringValidator.agregarPropiedad("puntos");
         sortStringValidator.agregarPropiedad("donaciones");
-        colaboradorPageableFactory = new ColaboradorPageableFactory(sortStringValidator);
+        colaboradorPageableFactory = new PageableFactory();
     }
 
     @Test

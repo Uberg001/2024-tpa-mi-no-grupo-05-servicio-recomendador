@@ -9,18 +9,14 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 @Component
-public class ColaboradorPageableFactory {
+public class PageableFactory {
 
     SortStringValidator sortStringValidator;
 
-    @Autowired
-    public ColaboradorPageableFactory(SortStringValidator sortStringValidator) {
+    public void setSortStringValidator(SortStringValidator sortStringValidator) {
         this.sortStringValidator = sortStringValidator;
-        sortStringValidator.agregarPropiedad(PropertyNames.PUNTOS);
-        sortStringValidator.agregarPropiedad(PropertyNames.DONACIONES);
     }
 
     public Pageable createPageableFromSortString(int page, int size, String sortString) {
