@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.services;
+package ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.repositories;
 
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.models.entities.Colaborador;
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.models.entities.MedioDeContacto;
@@ -27,7 +27,7 @@ class ColaboradorRepositoryTest {
     public void setUp() {
 
         for (int i = 0; i < 50; i++) {
-            Colaborador colaborador = new Colaborador("12345678", TipoDocumento.DNI, String.valueOf(i) + " 10", "Colaborador");
+            Colaborador colaborador = new Colaborador(Long.valueOf(i), "12345678", TipoDocumento.DNI, String.valueOf(i) + " 10", "Colaborador");
             Double puntosRandom = 10.0;
             Integer donacionesRandom = 10;
             colaborador.setPuntos(puntosRandom);
@@ -40,7 +40,7 @@ class ColaboradorRepositoryTest {
         }
 
         for (int i = 0; i < 50; i++) {
-            Colaborador colaborador = new Colaborador("12345678", TipoDocumento.DNI, String.valueOf(i) + " 45", "Colaborador");
+            Colaborador colaborador = new Colaborador(Long.valueOf(i+50),"12345678", TipoDocumento.DNI, String.valueOf(i) + " 45", "Colaborador");
             Double puntosRandom = 45.0;
             Integer donacionesRandom = 45;
             colaborador.setPuntos(puntosRandom);
@@ -49,7 +49,7 @@ class ColaboradorRepositoryTest {
         }
 
         for (int i = 0; i < 50; i++) {
-            Colaborador colaborador = new Colaborador("12345678", TipoDocumento.DNI, String.valueOf(i) + " 80", "Colaborador");
+            Colaborador colaborador = new Colaborador(Long.valueOf(i+100),"12345678", TipoDocumento.DNI, String.valueOf(i) + " 80", "Colaborador");
             Double puntosRandom = 80d;
             Integer donacionesRandom = 80;
             colaborador.setPuntos(puntosRandom);

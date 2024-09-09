@@ -25,6 +25,7 @@ class ColaboradorMapperTest {
 
 
         Colaborador colaborador = new Colaborador(
+                Long.valueOf(1),
                 "123456789",
                 TipoDocumento.DNI,
                 "Juan",

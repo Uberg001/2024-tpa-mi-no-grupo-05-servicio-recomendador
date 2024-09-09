@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Persistente {
     @Id
     @Column(name = "id")
-    private Long id;
+    protected Long id;
 
     public Long getId() {
         return id;

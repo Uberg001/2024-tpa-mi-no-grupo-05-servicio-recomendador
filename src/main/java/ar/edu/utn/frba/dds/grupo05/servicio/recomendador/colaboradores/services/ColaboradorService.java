@@ -45,6 +45,7 @@ public class ColaboradorService implements IColaboradorService {
         colaboradorRepository.saveAll(colaboradores);
     }
 
+    @Override
     public List<ColaboradorOutputDTO> getColaboradores(Double minPuntos,
                                                        Integer minDonaciones,
                                                        Integer page,

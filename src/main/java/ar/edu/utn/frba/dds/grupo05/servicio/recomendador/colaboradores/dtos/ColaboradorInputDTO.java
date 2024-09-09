@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ColaboradorInputDTO {
@@ -39,6 +40,15 @@ public class ColaboradorInputDTO {
     @PositiveOrZero(message = "Las donaciones no pueden ser negativas")
     @JsonProperty("donaciones")
     private Integer donaciones;
+
+    public ColaboradorInputDTO(Long id, String nroDocumento, String tipoDocumento, String nombre, String apellido) {
+        this.id = id;
+        this.nroDocumento = nroDocumento;
+        this.tipoDocumento = tipoDocumento;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mediosDeContacto = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;

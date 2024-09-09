@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ColaboradorPageableFactoryTest {
+class PageableFactoryTest {
 
     private PageableFactory colaboradorPageableFactory;
 
@@ -17,6 +17,7 @@ class ColaboradorPageableFactoryTest {
         sortStringValidator.agregarPropiedad("puntos");
         sortStringValidator.agregarPropiedad("donaciones");
         colaboradorPageableFactory = new PageableFactory();
+        colaboradorPageableFactory.setSortStringValidator(sortStringValidator);
     }
 
     @Test

@@ -32,7 +32,14 @@ public class Colaborador extends Persistente {
     @Column(name="donaciones")
     private Integer donaciones;
 
-    public Colaborador(String nroDocumento, TipoDocumento tipoDocumento, String nombre, String apellido) {
+    public Colaborador(
+        Long id,
+        String nroDocumento,
+        TipoDocumento tipoDocumento,
+        String nombre,
+        String apellido
+    ) {
+        this.id = id;
         this.nroDocumento = nroDocumento;
         this.tipoDocumento = tipoDocumento;
         this.nombre = nombre;
