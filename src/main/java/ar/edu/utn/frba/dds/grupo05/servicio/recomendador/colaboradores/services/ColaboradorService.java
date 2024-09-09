@@ -1,6 +1,7 @@
 package ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.services;
 
-import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos.ColaboradorDTO;
+import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos.ColaboradorInputDTO;
+import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos.ColaboradorOutputDTO;
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.mappers.ColaboradorMapper;
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.models.entities.Colaborador;
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.models.repositories.IColaboradorRepository;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ColaboradorService implements IColaboradorService {
@@ -32,23 +34,23 @@ public class ColaboradorService implements IColaboradorService {
     }
 
     @Override
-    public void bulkSave(List<ColaboradorDTO> colaboradoresInput) {
+    public void bulkSaveOrUpdate(List<ColaboradorInputDTO> colaboradoresInput) {
         List<Colaborador> colaboradores =  this.colaboradorMapper.toColaboradorFromInputDTO(colaboradoresInput);
-        this.colaboradorRepository.saveAll(colaboradores);
+        colaboradorRepository.saveAll(colaboradores);
     }
 
-    public List<ColaboradorDTO> getColaboradores(Double minPuntos,
-                                                 Integer minDonaciones,
-                                                 Integer page,
-                                                 Integer limit,
-                                                 String sortString) {
+    public List<ColaboradorOutputDTO> getColaboradores(Double minPuntos,
+                                                       Integer minDonaciones,
+                                                       Integer page,
+                                                       Integer limit,
+                                                       String sortString) {
         Pageable pageable = colaboradorPageableFactory.createPageableFromSortString(page, limit, sortString);
 
         List<Colaborador> colaboradores = colaboradorRepository
                 .findByPuntosGreaterThanEqualAndDonacionesGreaterThanEqual(pageable, minPuntos, minDonaciones);
 
-        List<ColaboradorDTO> colaboradorDTOS = colaboradorMapper.toColaboradorOutputDTOList(colaboradores);
+        List<ColaboradorOutputDTO> colaboradorOutputDTOS = colaboradorMapper.toColaboradorOutputDTOList(colaboradores);
 
-        return colaboradorDTOS;
+        return colaboradorOutputDTOS;
     }
 }

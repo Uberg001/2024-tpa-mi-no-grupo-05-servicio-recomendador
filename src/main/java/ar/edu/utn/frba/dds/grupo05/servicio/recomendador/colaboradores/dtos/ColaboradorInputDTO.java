@@ -7,7 +7,12 @@ import jakarta.validation.constraints.PositiveOrZero;
 
 import java.util.List;
 
-public class ColaboradorDTO {
+public class ColaboradorInputDTO {
+
+    @NotNull(message = "El id no puede estar vacío")
+    @JsonProperty("id")
+    private Long id;
+
     @NotBlank(message = "El numero de documento no puede estar vacío")
     @JsonProperty("nro_documento")
     private String nroDocumento;
@@ -34,6 +39,14 @@ public class ColaboradorDTO {
     @PositiveOrZero(message = "Las donaciones no pueden ser negativas")
     @JsonProperty("donaciones")
     private Integer donaciones;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNroDocumento() {
         return nroDocumento;

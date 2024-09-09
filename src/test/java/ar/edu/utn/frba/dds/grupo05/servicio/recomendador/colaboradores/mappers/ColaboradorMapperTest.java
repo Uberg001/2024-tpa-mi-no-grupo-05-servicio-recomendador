@@ -1,6 +1,6 @@
 package ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.mappers;
 
-import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos.ColaboradorDTO;
+import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos.ColaboradorOutputDTO;
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.models.entities.Colaborador;
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.models.entities.MedioDeContacto;
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.models.entities.TipoDocumento;
@@ -34,16 +34,16 @@ class ColaboradorMapperTest {
         colaborador.addMedioDeContacto(emailContacto);
         colaborador.addMedioDeContacto(whatsappContacto);
 
-        ColaboradorDTO colaboradorDTO = mapper.toDto(colaborador);
+        ColaboradorOutputDTO colaboradorOutputDTO = mapper.toDto(colaborador);
 
-        assertEquals(colaborador.getNombre(), colaboradorDTO.getNombre());
-        assertEquals(colaborador.getApellido(), colaboradorDTO.getApellido());
-        assertEquals(colaborador.getNroDocumento(), colaboradorDTO.getNroDocumento());
-        assertEquals(colaborador.getTipoDocumento().getValue(), colaboradorDTO.getTipoDocumento());
-        assertEquals(colaborador.getMediosDeContacto().size(), colaboradorDTO.getMediosDeContacto().size());
-        assertEquals(colaborador.getPuntos(), colaboradorDTO.getPuntos());
-        assertEquals(colaborador.getDonaciones(), colaboradorDTO.getDonaciones());
-        System.out.println(colaboradorDTO);
+        assertEquals(colaborador.getNombre(), colaboradorOutputDTO.getNombre());
+        assertEquals(colaborador.getApellido(), colaboradorOutputDTO.getApellido());
+        assertEquals(colaborador.getNroDocumento(), colaboradorOutputDTO.getNroDocumento());
+        assertEquals(colaborador.getTipoDocumento().getValue(), colaboradorOutputDTO.getTipoDocumento());
+        assertEquals(colaborador.getMediosDeContacto().size(), colaboradorOutputDTO.getMediosDeContacto().size());
+        assertEquals(colaborador.getPuntos(), colaboradorOutputDTO.getPuntos());
+        assertEquals(colaborador.getDonaciones(), colaboradorOutputDTO.getDonaciones());
+        System.out.println(colaboradorOutputDTO);
         // Comparacion de los medios de contacto
     }
 }

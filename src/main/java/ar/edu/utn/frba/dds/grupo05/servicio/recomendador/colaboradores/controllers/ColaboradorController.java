@@ -1,6 +1,7 @@
 package ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.controllers;
 
-import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos.ColaboradorDTO;
+import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos.ColaboradorInputDTO;
+import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos.ColaboradorOutputDTO;
 
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.services.IColaboradorService;
 import jakarta.validation.Valid;
@@ -24,7 +25,7 @@ public class ColaboradorController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ColaboradorDTO>> getColaboradores(
+    public ResponseEntity<List<ColaboradorOutputDTO>> getColaboradores(
             @RequestParam(value = "minPuntos", required = true) Double minPuntos,
             @RequestParam(value = "minDonaciones", required = true) Integer minDonaciones,
             @RequestParam(value = "page", defaultValue = "0") Integer page,
@@ -37,9 +38,8 @@ public class ColaboradorController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> updateColaboradoresDB(@Valid @RequestBody List<ColaboradorDTO> colaboradores) {
-        //colaboradorService.bulkSave(colaboradores);
-        System.out.println("OK");
+    public ResponseEntity<Void> updateColaboradoresDB(@Valid @RequestBody List<ColaboradorInputDTO> colaboradores) {
+        colaboradorService.bulkSaveOrUpdate(colaboradores);
         return ResponseEntity.ok().build();
     }
 }
