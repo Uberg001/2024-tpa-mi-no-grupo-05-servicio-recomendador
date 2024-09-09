@@ -3,13 +3,16 @@ package ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.controll
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos.ColaboradorDTO;
 
 import ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.services.IColaboradorService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Validated
 @RequestMapping("/colaboradores")
 public class ColaboradorController {
 
@@ -34,8 +37,9 @@ public class ColaboradorController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> updateColaboradoresDB(@RequestBody List<ColaboradorDTO> colaboradores) {
-        colaboradorService.bulkSave(colaboradores);
+    public ResponseEntity<Void> updateColaboradoresDB(@Valid @RequestBody List<ColaboradorDTO> colaboradores) {
+        //colaboradorService.bulkSave(colaboradores);
+        System.out.println("OK");
         return ResponseEntity.ok().build();
     }
 }

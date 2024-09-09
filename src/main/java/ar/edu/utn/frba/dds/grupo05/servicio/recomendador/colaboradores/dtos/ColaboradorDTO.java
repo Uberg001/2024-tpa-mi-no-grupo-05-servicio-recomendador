@@ -1,13 +1,18 @@
 package ar.edu.utn.frba.dds.grupo05.servicio.recomendador.colaboradores.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 
 import java.util.List;
 
 public class ColaboradorDTO {
+    @NotBlank(message = "El numero de documento no puede estar vacío")
     @JsonProperty("nro_documento")
     private String nroDocumento;
 
+    @NotBlank(message = "El tipo de documento no puede estar vacío")
     @JsonProperty("tipo_documento")
     private String tipoDocumento;
 
@@ -20,9 +25,13 @@ public class ColaboradorDTO {
     @JsonProperty("medios_de_contacto")
     private List<MedioDeConctactoDTO> mediosDeContacto;
 
+    @NotNull(message = "Los puntos no pueden estar vacíos")
+    @PositiveOrZero(message = "Los puntos no pueden ser negativos")
     @JsonProperty("puntos")
     private Double puntos;
 
+    @NotNull(message = "Las donaciones no pueden estar vacías")
+    @PositiveOrZero(message = "Las donaciones no pueden ser negativas")
     @JsonProperty("donaciones")
     private Integer donaciones;
 

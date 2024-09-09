@@ -1,0 +1,36 @@
+### Bad request
+POST http://localhost:8080/colaboradores
+content-type: application/json
+
+[
+    {
+    "nro_documento": "123456789"
+    }
+]
+
+
+### Good request
+POST http://localhost:8080/colaboradores
+content-type: application/json
+
+[
+    {
+    "nro_documento": "123456789",
+    "tipo_documento": "DNI",
+    "puntos": 40.0,
+    "donaciones": 1
+    }
+]
+
+### Good request
+POST http://localhost:8080/colaboradores
+content-type: application/json
+
+[
+  {
+    "nro_documento": "123456789",
+    "tipo_documento": "DNI",
+    "puntos": 40.0,
+    "donaciones": -1
+  }
+]
