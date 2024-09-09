@@ -52,7 +52,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ColaboradorDTO'
+                  $ref: '#/components/schemas/ColaboradorOutputDTO'
     post:
       summary: Actualizar la base de datos de colaboradores
       description: Guardar o actualizar en bloque colaboradores en la base de datos
@@ -63,13 +63,13 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/ColaboradorDTO'
+                $ref: '#/components/schemas/ColaboradorInputDTO'
       responses:
         '200':
           description: Operación exitosa
 components:
   schemas:
-    ColaboradorDTO:
+    ColaboradorOutputDTO:
       type: object
       required:
         - nro_documento
@@ -80,6 +80,43 @@ components:
         - puntos
         - donaciones
       properties:
+        nro_documento:
+          type: string
+        tipo_documento:
+          type: string
+          enum:
+            - DNI
+            - LE
+            - LC
+            - PASAPORTE
+          description: Tipo de documento de identidad
+        nombre:
+          type: string
+        apellido:
+          type: string
+        medios_de_contacto:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedioDeContactoDTO'
+        puntos:
+          type: number
+          format: double
+        donaciones:
+          type: integer
+    ColaboradorInputDTO:
+      type: object
+      required:
+        - id
+        - nro_documento
+        - tipo_documento
+        - nombre
+        - apellido
+        - medios_de_contacto
+        - puntos
+        - donaciones
+      properties:
+        id:
+          type: integer
         nro_documento:
           type: string
         tipo_documento:
