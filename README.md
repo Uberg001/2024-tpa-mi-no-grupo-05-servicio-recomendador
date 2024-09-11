@@ -38,3 +38,8 @@ Contara con los siguientes query params:
 - `sort`: campo por el cual se ordenarán los colaboradores (puede ser `points,(asc|desc)` o `donations,(asc|desc)`). Desc por default.
 
 A su vez, contamos con un endpoint que permite la carga de colaboradores desde el sistema principal, mediante un POST a la URL `/colaboradores`.
+
+## Pasos para deploy local
+1. Clonar el repositorio
+2. Correr el jar con el siguiente comando: `java -jar reconocimientos-extra-0.0.1-SNAPSHOT.jar`
+3. Por cualquier duda, acceder a la URL `http://localhost:8080/swagger-ui.html` para ver la documentación de la API
