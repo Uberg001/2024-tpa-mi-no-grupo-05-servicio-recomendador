@@ -9,7 +9,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "colaboradores")
-public class Colaborador extends Persistente {
+public class Colaborador {
+    @Id
+    @Column(name = "id")
+    private Long id;
+
     @Column(name="nroDocumento", length = 20)
     private String nroDocumento;
 
@@ -23,7 +27,7 @@ public class Colaborador extends Persistente {
     @Column(name="apellido", length = 100)
     private String apellido;
 
-    @OneToMany(mappedBy = "colaborador", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "colaborador", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<MedioDeContacto> mediosDeContacto;
 
     @Column(name="puntos")
@@ -126,5 +130,13 @@ public class Colaborador extends Persistente {
 
     public void setDonaciones(Integer donaciones) {
         this.donaciones = donaciones;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

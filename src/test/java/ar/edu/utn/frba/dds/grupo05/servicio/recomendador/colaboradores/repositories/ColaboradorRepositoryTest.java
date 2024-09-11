@@ -35,6 +35,7 @@ class ColaboradorRepositoryTest {
 
             MedioDeContacto medioDeContacto = new MedioDeContacto(TipoMedioDeContacto.EMAIL,
                                                             "colaborador" + i + "@gmail.com");
+
             colaborador.addMedioDeContacto(medioDeContacto);
             colaboradorRepository.save(colaborador);
         }

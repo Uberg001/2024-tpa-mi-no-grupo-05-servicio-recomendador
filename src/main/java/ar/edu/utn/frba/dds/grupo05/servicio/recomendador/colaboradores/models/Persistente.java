@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 @MappedSuperclass
 public class Persistente {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     protected Long id;
 
