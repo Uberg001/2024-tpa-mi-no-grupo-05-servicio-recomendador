@@ -1,1 +1,1 @@
-GET localhost:8080/colaboradores?minPuntos=10&minDonaciones=5&limit=100&sort=puntoss,desc;donaciones,desc
+GET localhost:8080/colaboradores?minPuntos=10&minDonaciones=5&limit=100&sort=puntos,desc;donaciones,desc
